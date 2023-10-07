@@ -1,40 +1,40 @@
 
 //table
-function addRow()
-{
+// function addRow()
+// {
 
-    var name = document.getElementById('studentname').value;
-    var birthdate = document.getElementById('birthdate').value;
-    const genderElements = document.getElementsByName('gender');
-    var gender = '';
-    for (const element of genderElements) {
-        if (element.checked) {
-            gender = element.value;
-            break;
-        }
-    }
-    var phone = document.getElementById('phonenumber').value;
-    var grade = document.getElementById('grade').value;
+//     var name = document.getElementById('studentname').value;
+//     var birthdate = document.getElementById('birthdate').value;
+//     const genderElements = document.getElementsByName('gender');
+//     var gender = '';
+//     for (const element of genderElements) {
+//         if (element.checked) {
+//             gender = element.value;
+//             break;
+//         }
+//     }
+//     var phone = document.getElementById('phonenumber').value;
+//     var grade = document.getElementById('grade').value;
 
     
-        var table = document.getElementsByTagName('table')[0];
+//         var table = document.getElementsByTagName('table')[0];
         
     
-        var newRow = table.insertRow(table.rows.length);
+//         var newRow = table.insertRow(table.rows.length);
     
-        var cel1 = newRow.insertCell(0);
-        var cel2 = newRow.insertCell(1);
-        var cel3 = newRow.insertCell(2);
-        var cel4 = newRow.insertCell(3);
-        var cel5 = newRow.insertCell(4);
+//         var cel1 = newRow.insertCell(0);
+//         var cel2 = newRow.insertCell(1);
+//         var cel3 = newRow.insertCell(2);
+//         var cel4 = newRow.insertCell(3);
+//         var cel5 = newRow.insertCell(4);
     
-        cel1.innerHTML = name;
-        cel2.innerHTML = birthdate;
-        cel3.innerHTML = gender;
-        cel4.innerHTML = phone;
-        cel5.innerHTML = grade;
+//         cel1.innerHTML = name;
+//         cel2.innerHTML = birthdate;
+//         cel3.innerHTML = gender;
+//         cel4.innerHTML = phone;
+//         cel5.innerHTML = grade;
 
-}
+// }
 
 class Student {
     constructor(name, birthdate, gender,phone ,major,imageurl) {
