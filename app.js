@@ -35,27 +35,6 @@
 //         cel5.innerHTML = grade;
 
 // }
-window.addEventListener('load',function () {
-    let data = JSON.parse(localStorage.getItem("students"));
-    studentinfo = this.localStorageContent ? JSON.parse(data):[];
-    let info = document.getElementById('info');
-    data.forEach(data => {
-        let card = document.createElement('div');
-        card.innerHTML =  `
-        <div class="card" style="width: 18rem;">
-        <img src="media/Profile-Male-PNG.png"  width="100px">
-        <div class="card-body ">
-        <p>${data.name}</p>
-        <p>${data.birthdate}</p>
-        <p>${data.gender}</p>
-        <p>${data.phone}</p>
-        <p>${data.major}</p>
-        </div>
-        </div>
-        `;
-        info.appendChild(card);
-    });   
-})
 
 class Student {
     constructor(name, birthdate, gender,phone ,major,imageurl) {
@@ -108,6 +87,27 @@ function student() {
     
 }
 
+window.addEventListener('load',function () {
+    let data = JSON.parse(localStorage.getItem("students"));
+    studentinfo = this.localStorageContent ? JSON.parse(data):[];
+    let info = document.getElementById('info');
+    data.forEach(data => {
+        let card = document.createElement('div');
+        card.innerHTML =  `
+        <div class="card" style="width: 18rem;">
+        <img src="media/Profile-Male-PNG.png"  width="100px">
+        <div class="card-body ">
+        <p>${data.name}</p>
+        <p>${data.birthdate}</p>
+        <p>${data.gender}</p>
+        <p>${data.phone}</p>
+        <p>${data.major}</p>
+        </div>
+        </div>
+        `;
+        info.appendChild(card);
+    });   
+})
 
 
 
