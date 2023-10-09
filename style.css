@@ -10,8 +10,12 @@ body {
     padding: 20px;
 }
 
-input[type="text"], 
-select {
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="number"],
+select
+ {
     width: 50%;
     padding: 10px;
     margin-top: 15px;
@@ -47,5 +51,26 @@ button:hover {
     background-color: #45a049;
 }
 
+#info{
+    display: grid;
+    grid-template-columns: repeat(6,350px); 
+    row-gap: 5px;
+    column-gap: 5px;
+    text-align:center
+}
+
+img {
+    position: relative;
+    left: 85px;
+    top: 10px;
+}
 
 
+
+@media (max-width: 768px) {
+
+    #info{
+        grid-template-columns: repeat(1, 1fr);
+    }
+   
+}
