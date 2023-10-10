@@ -35,30 +35,9 @@
 //         cel5.innerHTML = grade;
 
 // }
-window.addEventListener('load',function () {
-    let data = JSON.parse(localStorage.getItem("students"));
-    studentinfo = this.localStorageContent ? JSON.parse(data):[];
-    let info = document.getElementById('info');
-    data.forEach(data => {
-        let card = document.createElement('div');
-        card.innerHTML =  `
-        <div class="card" style="width: 18rem;">
-        <img src="media/Profile-Male-PNG.png"  width="100px">
-        <div class="card-body ">
-        <p>${data.name}</p>
-        <p>${data.birthdate}</p>
-        <p>${data.gender}</p>
-        <p>${data.phone}</p>
-        <p>${data.major}</p>
-        </div>
-        </div>
-        `;
-        info.appendChild(card);
-    });   
-})
 
 class Student {
-    constructor(name, birthdate, gender,phone ,major,imageurl) {
+    constructor(name, birthdate,gender,phone ,major,imageurl) {
         this.name = name;
         this.birthdate = birthdate;
         this.gender = gender;
@@ -69,8 +48,10 @@ class Student {
 
 }
 
-let studentinfo=[];
-function student() {
+
+let student = document.getElementById("student");
+student.addEventListener("click", (e) => {
+    e.preventDefault();
     let name = document.getElementById('studentname').value;
     let birthdate = document.getElementById('birthdate').value;
     const genderElements = document.getElementsByName('gender');
@@ -84,29 +65,55 @@ function student() {
     let phone = document.getElementById('phonenumber').value;
     let major = document.getElementById('major').value;
     let image = document.getElementById('photo').value;
-    studentinfo.push(new Student(name,birthdate,gender,phone,major,image));
-    localStorage.setItem("students",JSON.stringify(studentinfo));
-    let data = JSON.parse(localStorage.getItem("students"));
-   studentinfo = this.localStorageContent ? JSON.parse(data):[];
-    let info = document.getElementById('info');
-    data.forEach(data => {
+    const student = new Student(name,birthdate,gender,phone,major,image);
+    savedata(student);
+});
+    function savedata(student) {
+        const stored = JSON.parse(localStorage.getItem('students'))|| [];
+        stored.push(student);
+        localStorage.setItem("students",JSON.stringify(stored));
+        let info = document.getElementById('info');
         let card = document.createElement('div');
         card.innerHTML =  `
         <div class="card" style="width: 18rem;">
         <img src="media/Profile-Male-PNG.png"  width="100px">
         <div class="card-body ">
-        <p>${data.name}</p>
-        <p>${data.birthdate}</p>
-        <p>${data.gender}</p>
-        <p>${data.phone}</p>
-        <p>${data.major}</p>
+        <p>${student.name}</p>
+        <p>${student.birthdate}</p>
+        <p>${student.gender}</p>
+        <p>${student.phone}</p>
+        <p>${student.major}</p>
         </div>
         </div>
         `;
-        info.appendChild(card);
-    });   
+        info.appendChild(card); 
+
+    } 
+
+    function render() {
+        let info = document.getElementById('info');
+        let storedstudent = JSON.parse(localStorage.getItem('students'));
+        storedstudent.forEach((student)=>{
+            let card = document.createElement('div');
+        card.innerHTML =  `
+        <div class="card" style="width: 18rem;">
+        <img src="media/Profile-Male-PNG.png"  width="100px">
+        <div class="card-body ">
+        <p>${student.name}</p>
+        <p>${student.birthdate}</p>
+        <p>${student.gender}</p>
+        <p>${student.phone}</p>
+        <p>${student.major}</p>
+        </div>
+        </div>
+        `;
+        info.appendChild(card); 
+        });
+    }
+
+    render();
     
-}
+
 
 
 
